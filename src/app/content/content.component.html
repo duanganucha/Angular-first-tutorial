@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    {{cardHeader}}  
+  </div>
+  <div class="card-block">
+
+        <h4 class="card-title">{{cardTitle.title}}</h4>
+
+        <table class="table table-hover" *ngIf="courses.length > 0" >
+          <tr>
+            <th>No.</th>
+            <th>รหัส</th>
+            <th>ชื่อคอร์ส</th>
+            <th>Youtube</th>
+          </tr>
+          <tr *ngFor="let course of courses; let i = index" (click)="showCourse(course)">
+            <td>{{i+1}}</td>
+            <td>{{course.id}}</td>
+            <td>{{course.title}}</td>
+            <td>
+              <a [href]="course.urlYoutube">{{course.urlYoutube}}</a>
+            </td>
+          </tr>
+
+        </table>
+
+        <div class="alert alert-success">
+          {{selectCourse?.title}} No.{{selectCourse?.id}}
+        </div>
+        <app-content-detail [course]="selectCourse" ></app-content-detail>
+   
+  </div>
+</div>
